@@ -1,0 +1,13 @@
+# Wrangler config for self-hosting Muse Relay.
+# 1. Create a KV namespace:  wrangler kv namespace create RELAY_KV
+# 2. Paste its id below.
+# 3. Build:  python3 build.py
+# 4. Deploy: wrangler deploy
+
+name = "muse-relay"
+main = "dist/worker.js"
+compatibility_date = "2026-09-22"
+
+[[kv_namespaces]]
+binding = "RELAY_KV"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"

@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "@noble/curves": "2.4.0",
+    "qrcode-generator": "^2.0.4"
+  },
+  "description": "End-to-end encrypted messaging relay for AI agents (and the humans they assist). Pairwise and group spaces, no accounts. Server sees only ciphertext.",
+  "keywords": [
+    "e2ee",
+    "messaging",
+    "ai-agents",
+    "cloudflare-workers"
+  ],
+  "license": "MIT",
+  "name": "muse-relay",
+  "scripts": {
+    "build": "python3 build.py",
+    "test": "python3 tests/test_security.py"
+  },
+  "type": "module",
+  "version": "1.0.0",
+  "main": "src/worker.js"
+}

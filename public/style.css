@@ -1,0 +1,220 @@
+/* Muse Relay — warm-paper theme, ink-blue accent.
+   Design language cues from the Serious Endeavor book tracker. */
+:root {
+  color-scheme: light;
+  --bg: #faf4ed;
+  --surface: #fffaf3;
+  --surface-2: #f2e9e1;
+  --surface-raised: #fffdf8;
+  --ink: #1c1c1e;
+  --muted: #6c6c70;
+  --subtle: #8e8e93;
+  --line: #dfdad9;
+  --line-strong: #cecacd;
+  --accent: #1e5a8a;
+  --accent-hover: #174a72;
+  --accent-soft: #dce9f5;
+  --gold: #a86a12;
+  --gold-soft: #fae9cc;
+  --danger: #cf2a1e;
+  --danger-soft: #fbe3e1;
+  --ok: #2e6b4e;
+  --ok-soft: #d9e9dd;
+  --on-accent: #ffffff;
+  --shadow-soft: 0 6px 18px rgba(28,28,30,.07);
+  --shadow: 0 14px 34px rgba(28,28,30,.10);
+  --radius: 20px;
+  --radius-sm: 14px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.55;
+}
+.wrap { max-width: 660px; margin: 0 auto; padding: 0 18px; }
+
+/* Header */
+header.brand {
+  display: flex; align-items: center; gap: 10px;
+  padding: 22px 0 6px;
+}
+.brand-mark {
+  width: 38px; height: 38px; border-radius: 12px;
+  background: var(--accent); color: var(--on-accent);
+  display: grid; place-items: center; flex: none;
+}
+.brand-mark svg { width: 22px; height: 22px; }
+.brand-name { font-family: var(--font-serif); font-size: 21px; font-weight: 700; letter-spacing: -.01em; }
+.brand-tag { font-size: 12px; color: var(--muted); font-weight: 600; }
+
+/* Hero */
+.hero { padding: 34px 0 10px; }
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 40px; line-height: 1.12; letter-spacing: -.02em;
+  margin: 0 0 14px;
+}
+.hero p.lede { font-size: 17px; color: var(--muted); margin: 0 0 22px; max-width: 34em; }
+.hero p.lede strong { color: var(--ink); }
+.cta-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 52px; padding: 0 24px;
+  border: 0; border-radius: 999px;
+  background: var(--accent); color: var(--on-accent);
+  font-family: var(--font-sans); font-size: 16px; font-weight: 700;
+  cursor: pointer; text-decoration: none;
+}
+.btn:active { background: var(--accent-hover); }
+.btn.secondary { background: var(--surface); color: var(--ink); border: 1px solid var(--line-strong); }
+.btn.secondary:active { background: var(--surface-2); }
+.btn.small { min-height: 44px; padding: 0 18px; font-size: 14px; }
+
+/* Sections & cards */
+section.block { padding: 26px 0 6px; }
+section.block h2 {
+  font-family: var(--font-serif); font-size: 26px; letter-spacing: -.02em;
+  margin: 0 0 6px;
+}
+section.block .sub { color: var(--muted); font-size: 15px; margin: 0 0 16px; max-width: 36em; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 20px;
+  margin-bottom: 12px;
+}
+.card h3 { margin: 0 0 8px; font-size: 17px; letter-spacing: -.01em; }
+.card h3 .step-n {
+  display: inline-grid; place-items: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 14px; font-weight: 800; margin-right: 8px; vertical-align: 2px;
+}
+.card p { margin: 8px 0; font-size: 15px; }
+.card p.muted, .muted { color: var(--muted); font-size: 14px; }
+.card code, code.inline {
+  font-family: var(--font-mono); font-size: 13px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 7px; padding: 2px 7px;
+  word-break: break-all;
+}
+.say {
+  font-family: var(--font-serif); font-style: italic;
+  background: var(--surface-raised); border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 12px 14px; margin: 10px 0; font-size: 15px;
+}
+
+/* Sees / never-sees table */
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 520px) { .twocol { grid-template-columns: 1fr; } }
+.sees { border-radius: var(--radius-sm); padding: 14px 16px; font-size: 14px; }
+.sees.bad { background: var(--gold-soft); border: 1px solid var(--gold); }
+.sees.good { background: var(--ok-soft); border: 1px solid var(--ok); }
+.sees h4 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+.sees.bad h4 { color: var(--gold); }
+.sees.good h4 { color: var(--ok); }
+.sees ul { margin: 0; padding-left: 18px; }
+.sees li { margin: 4px 0; }
+
+/* Forms */
+label.field { display: block; color: var(--muted); font-size: 12px; font-weight: 700; margin: 12px 0 4px; }
+input[type=text], textarea {
+  width: 100%; min-height: 48px; padding: 10px 14px;
+  font-size: 16px; font-family: var(--font-sans); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface-raised); outline: none;
+}
+input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(30,90,138,.18); }
+textarea { min-height: 96px; resize: vertical; }
+.secret-box {
+  font-family: var(--font-mono); font-size: 15px; line-height: 1.7;
+  background: var(--surface-2); border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-sm); padding: 14px 16px; margin: 10px 0;
+  word-break: break-all; user-select: all;
+}
+.qr-wrap { display: grid; place-items: center; padding: 12px 0 4px; }
+.qr-wrap svg { width: 200px; height: 200px; background: #fff; padding: 10px; border-radius: 12px; border: 1px solid var(--line); }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.err { color: var(--danger); font-size: 14px; font-weight: 600; margin-top: 8px; }
+.ok-line { color: var(--ok); font-size: 14px; font-weight: 600; }
+
+/* Thread */
+.thread { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
+.msg {
+  background: var(--surface-raised); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: 12px 14px; max-width: 92%;
+}
+.msg.mine { align-self: flex-end; background: var(--accent-soft); border-color: var(--accent); }
+.msg .meta { display: flex; gap: 8px; align-items: baseline; margin-bottom: 4px; flex-wrap: wrap; }
+.msg .who { font-size: 13px; font-weight: 800; }
+.msg .when { font-size: 11px; color: var(--subtle); }
+.msg .body { font-size: 15px; white-space: pre-wrap; word-break: break-word; }
+.badge {
+  font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+  border-radius: 999px; padding: 2px 8px;
+}
+.badge.ok { background: var(--ok-soft); color: var(--ok); }
+.badge.warn { background: var(--danger-soft); color: var(--danger); }
+.member-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.member {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 700;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 999px; padding: 6px 12px;
+}
+.member .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+
+details.disclosure { margin: 10px 0; }
+details.disclosure summary {
+  cursor: pointer; font-weight: 700; font-size: 14px; color: var(--accent);
+  padding: 6px 0;
+}
+details.disclosure .inner { padding: 4px 0 8px; font-size: 14px; color: var(--muted); }
+details.disclosure .inner p { margin: 8px 0; }
+
+footer.site {
+  margin-top: 40px; padding: 24px 0 60px;
+  border-top: 1px solid var(--line);
+  color: var(--subtle); font-size: 13px;
+}
+footer.site p { margin: 6px 0; max-width: 36em; }
+
+/* Prominent per-space agent-onboarding card: the primary action in the
+   thread view, visible without opening any disclosure. */
+.onboard { border: 2px solid var(--accent); }
+.onboard h3 { margin-top: 0; }
+
+/* Share card: sits directly under the onboard card, always visible (not a
+   disclosure). Deliberately quieter than .onboard — standard card border —
+   so the two actions read as distinct: onboard = connect your AI agent,
+   share = invite a person (send them the link). */
+.share h3 { margin-top: 0; }
+
+/* Fixed toast for one-tap copy confirmations. */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  z-index: 50;
+  max-width: 92vw;
+  text-align: center;
+}
