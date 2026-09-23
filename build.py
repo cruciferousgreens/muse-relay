@@ -75,6 +75,26 @@ def main():
     assets["/"] = assets["/index.html"]
     assets["/index.html"] = assets["/index.html"]
 
+    # Plausible analytics: injected at build time from a snippet that lives
+    # OUTSIDE this repo (~/workspace/muse-relay-analytics/plausible.html),
+    # so the public GitHub tree never carries the tracking code. The repo
+    # keeps only the <!--PLAUSIBLE--> placeholder comment.
+    snippet_path = os.path.expanduser(
+        "~/workspace/muse-relay-analytics/plausible.html")
+    try:
+        with open(snippet_path, encoding="utf-8") as f:
+            snippet = f.read().strip()
+    except FileNotFoundError:
+        snippet = ""
+    if snippet:
+        for key in ("/", "/index.html", "/app.html"):
+            a = assets.get(key)
+            if a and a.get("encoding") != "base64":
+                a["body"] = a["body"].replace("<!--PLAUSIBLE-->", snippet, 1)
+        print("injected Plausible snippet into /, /index.html, /app.html")
+    else:
+        print("no Plausible snippet found; shipping without analytics")
+
     with open(os.path.join(DIST, "worker-bundle.js"), encoding="utf-8") as f:
         bundle_src = f.read()
     placeholder = "__ASSETS_JSON__"
